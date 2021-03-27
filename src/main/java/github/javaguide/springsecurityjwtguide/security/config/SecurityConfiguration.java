@@ -72,7 +72,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Cors配置优化
+     * Cors配置优化,好让我们的前端能够访问到我们的 API，并且不让其他人访问。
      **/
     @Bean
     CorsConfigurationSource corsConfigurationSource() {

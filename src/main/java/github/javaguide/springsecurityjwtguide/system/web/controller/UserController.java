@@ -48,6 +48,13 @@ public class UserController {
         return ResponseEntity.ok().body(allUser);
     }
 
+    @GetMapping("/success")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @ApiOperation("普通用户")
+    public ResponseEntity<?> success(){
+        return ResponseEntity.ok().body("yes, sir");
+    }
+
     @PutMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @ApiOperation("更新用户")

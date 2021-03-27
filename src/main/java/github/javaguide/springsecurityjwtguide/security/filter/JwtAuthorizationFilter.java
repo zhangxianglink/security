@@ -44,6 +44,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String tokenValue = token.replace(SecurityConstants.TOKEN_PREFIX, "");
         UsernamePasswordAuthenticationToken authentication = null;
         try {
+            // 前端传入token和redis保存的不一致
             String previousToken = stringRedisTemplate.opsForValue().get(JwtTokenUtils.getId(tokenValue));
             if (!token.equals(previousToken)) {
                 SecurityContextHolder.clearContext();

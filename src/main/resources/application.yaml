@@ -26,9 +26,9 @@ spring:
     # 使用了Spring Cache后，能指定spring.cache.type就手动指定一下，虽然它会自动去适配已有Cache的依赖，但先后顺序会对Redis使用有影响（JCache -> EhCache -> Redis -> Guava）
     type: REDIS
   redis:
-    host: 127.0.0.1
+    host: 101.133.132.255
     port: 6379
-    # password:  默认没有密码，生产环境一定要设置密码
+    password: redispwd
     # 连接超时时间（ms）
     timeout: 10000
     # Redis默认情况下有16个分片，这里配置具体使用的分片，默认是0

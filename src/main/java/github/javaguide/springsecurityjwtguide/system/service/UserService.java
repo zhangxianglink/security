@@ -28,6 +28,7 @@ import java.util.Objects;
  * @author shuang.kou
  */
 @Service
+// lombok实现功能，引用的对象需要final，或者@Notnull 进行修饰
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService {
 
