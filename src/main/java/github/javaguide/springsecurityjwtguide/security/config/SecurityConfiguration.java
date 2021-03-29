@@ -7,6 +7,7 @@ import github.javaguide.springsecurityjwtguide.security.filter.JwtAuthorizationF
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -73,13 +74,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
      * Cors配置优化,好让我们的前端能够访问到我们的 API，并且不让其他人访问。
+     * CorsConfigurationSource 提供给CorsFilter
      **/
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
+
         org.springframework.web.cors.CorsConfiguration configuration = new CorsConfiguration();
+        //可以通过的ip，*代表所有，可以使用指定的ip，多个的话可以用逗号分隔，默认为*
         configuration.setAllowedOrigins(singletonList("*"));
         // configuration.setAllowedOriginPatterns(singletonList("*"));
+        //请求支持的头信息，默认为*，所有
         configuration.setAllowedHeaders(singletonList("*"));
+        //请求方式
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PUT", "OPTIONS"));
         configuration.setExposedHeaders(singletonList(SecurityConstants.TOKEN_HEADER));
         configuration.setAllowCredentials(false);
